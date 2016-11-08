@@ -7,7 +7,7 @@ class Solution:
         
         if len(reversedString) > 0:
             reversedString = reversedString[:-1]
-            print reversedString
+            print reversedString/
         
 
         return reversedString
