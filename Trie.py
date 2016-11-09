@@ -31,9 +31,7 @@ class Trie(object):
         for char in word:
             if char in cur.children:
                 cur = cur.children[char]
-                print cur.children 
-            else:
-                print char 
+            else: 
                 return False
                 
         return cur.children.get(None, False)
@@ -45,16 +43,18 @@ class Trie(object):
             if char in cur.children:
                 cur = cur.children[char]
             else :
-                print char
                 return False
+
         return True
 
 if __name__ == "__main__":
+    #initialize and populate trie
     trie = Trie()
-    #trie.insert("somestring")
-    trie.insert("derp")
-    trie.insert("derk")
-    #print trie.search("derp")
-    #print trie.search("derz")
-
-    print trie.startsWith("dek")
+    trie.insert("somestring")
+    trie.insert("derp")             
+  
+    print trie.search("derp")       #true
+    print trie.search("derz")       #false
+    print trie.startsWith("dek")    #false
+    print trie.startsWith("de")     #true
+    print trie.startsWith("some")   #true
