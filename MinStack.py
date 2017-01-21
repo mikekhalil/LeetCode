@@ -1,27 +1,24 @@
-from heapq import *
 class MinStack(object):
-
     def __init__(self):
-        self.stack = []
-        self.heap = []
+        self.mins = []
+        self.data = []
 
     def push(self, x):
-        self.stack.append(x)
-        heappush(self.heap,x)
+        if (len(self.mins) == 0) or (len(self.mins) > 0 and x <= self.mins[len(self.mins)-1]):
+            self.mins.append(x)
+        self.data.append(x)
 
     def pop(self):
-        if len(self.stack) > 0:
-            item = self.stack.pop(len(self.stack)-1)
-            self.heap.remove(item)
-            heapify(self.heap)
-            return item
-        return None    
-    
-    def top(self):
-        if len(self.stack) > 0:
-            return self.stack[len(self.stack)-1]
-        return None
+        if len(self.data) > 0:
+            val = self.data.pop()
+            if val == self.mins[len(self.mins)-1]:
+                self.mins.pop()
+            return val
 
+    def top(self):
+        if len(self.data) > 0:
+            return self.data[len(self.data)-1]
+        
     def getMin(self):
-        if (len(self.heap) > 0):
-            return self.heap[0]
+        if len(self.mins) > 0:
+            return self.mins[len(self.mins)-1]
